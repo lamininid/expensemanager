@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import in.bushansirgur.expensemanager.dto.ExpenseDTO;
 import in.bushansirgur.expensemanager.service.ExpenseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,6 +26,17 @@ public class ExpenseController {
 		model.addAttribute("expenses", expenseService.getAllExpenses());
 		return "expenses-list";
 	}
+	@GetMapping("/createExpense")
+	public String showExpenseForm(Model model){
+		model.addAttribute("expense",new ExpenseDTO());
+		return "expense-form";
+	}
+	@PostMapping("/saveOrUpdateExpense")
+	public String showOrUpdateExpenseDetails(@ModelAttribute("expense") ExpenseDTO expenseDTO){
+		System.out.println("Printing ExpenseDTO"+expenseDTO);
+		return "redirect:/expenses";
+	}
+
 }
 
 
