@@ -1,11 +1,20 @@
 <html xmlns:th="https://thymeleaf.org">
 	<head>
 		<title>Expense Manager - Expenses</title>
+		<style>
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>List of Expenses</h1>
 		<hr/>
-		<table border="1">
+		<div>
+		<a th:href="@{/createExpense}">Create Expense</a>
+		</div>
+		<table>
 			<thead>
 				<th>Name</th>
 				<th>Description</th>
